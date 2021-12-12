@@ -17,6 +17,15 @@ services:
       - './verdaccio/storage:/verdaccio/storage'
       - './verdaccio/conf:/verdaccio/conf'
 
+  ## refs: https://github.com/louislam/uptime-kuma
+  uptime-kuma:
+    image: louislam/uptime-kuma
+    container_name: 'uptime-kuma'
+    ports:
+      - '3001:3001'
+    volumes:
+      - './uptime-kuma:/app/data'
+
 networks:
   verdaccio-network:
     driver: bridge

@@ -11,3 +11,7 @@ Use the [htpasswd auth](https://verdaccio.org/docs/authentication/#default-htpas
 The default config is disable register.
 
 Run `htpasswd verdaccio/conf/htpasswd [username]` command in terminal for add user
+
+## uptime-kuma
+
+Use [uptime-kuma](https://github.com/louislam/uptime-kuma) for status page

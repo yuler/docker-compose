@@ -4,3 +4,6 @@
 verdaccio/storage/*
 !verdaccio/storage/.gitkeep
 
+# uptime-kuma
+uptime-kuma/*
+!uptime-kuma/.gitkeep
