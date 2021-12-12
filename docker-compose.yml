@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  # refs: https://verdaccio.org/docs/docker/
+  verdaccio:
+    image: verdaccio/verdaccio
+    container_name: 'verdaccio_htpasswd_v5'
+    networks:
+      - verdaccio-network
+    environment:
+      # - VERDACCIO_PUBLIC_URL=https://example.com/
+      - VERDACCIO_PORT=4873
+      - DEBUG=verdaccio:*
+    ports:
+      - '4873:4873'
+    volumes:
+      - './verdaccio/storage:/verdaccio/storage'
+      - './verdaccio/conf:/verdaccio/conf'
+
+networks:
+  verdaccio-network:
+    driver: bridge

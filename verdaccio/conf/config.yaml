@@ -1,0 +1,56 @@
+# refs: https://verdaccio.org/docs/configuration/
+storage: /verdaccio/storage
+
+web:
+  enable: true
+  title: Verdaccio v5 htpasswd
+  primary_color: red
+
+auth:
+  htpasswd:
+    cache:
+      size: 100
+      expire: 864000
+    file: /verdaccio/conf/htpasswd
+    max_users: -1
+
+security:
+  api:
+    jwt:
+      sign:
+        expiresIn: 60d
+        notBefore: 1
+  web:
+    sign:
+      expiresIn: 7d
+
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+
+  taobao:
+    url: https://registry.npm.taobao.org/
+
+  yarn:
+    url: https://registry.yarnpkg.com/
+    timeout: 10s
+
+packages:
+  "@*/*":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+
+  "**":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+
+middlewares:
+  audit:
+    enabled: true
+
+experiments:
+  token: true
+
+logs: { type: stdout, format: pretty, level: trace }
